@@ -1,0 +1,17 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_type")
+public class UserType {
+
+	@Id
+	int UserTypeId;
+	
+	@Column
+	String UserType;
+}

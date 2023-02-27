@@ -1,0 +1,128 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="login")
+public class Login
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int Login_id;
+	
+	@OneToOne
+	@JoinColumn(name="userid")
+	User user_id;
+	
+	@ManyToOne
+	@JoinColumn(name="usertypeid")
+	UserType user_type_id;
+	
+	@Column
+	String user_name;
+	
+	@Column
+	String password;
+	
+	@Column
+	boolean accoutstatus; 
+	
+	@ManyToOne
+	@JoinColumn(name="qid")
+	Question q_id;
+	
+	@Column
+	String answer;
+
+	public Login() {
+		super();
+	}
+
+	public Login(User user_id, UserType user_type_id, String user_name, String password, boolean accoutstatus,
+			Question q_id, String answer) {
+		super();
+		this.user_id = user_id;
+		this.user_type_id = user_type_id;
+		this.user_name = user_name;
+		this.password = password;
+		this.accoutstatus = accoutstatus;
+		this.q_id = q_id;
+		this.answer = answer;
+	}
+
+	public int getLogin_id() {
+		return Login_id;
+	}
+
+	public void setLogin_id(int login_id) {
+		Login_id = login_id;
+	}
+
+	public User getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(User user_id) {
+		this.user_id = user_id;
+	}
+
+	public UserType getUser_type_id() {
+		return user_type_id;
+	}
+
+	public void setUser_type_id(UserType user_type_id) {
+		this.user_type_id = user_type_id;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isAccoutstatus() {
+		return accoutstatus;
+	}
+
+	public void setAccoutstatus(boolean accoutstatus) {
+		this.accoutstatus = accoutstatus;
+	}
+
+	public Question getQ_id() {
+		return q_id;
+	}
+
+	public void setQ_id(Question q_id) {
+		this.q_id = q_id;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	
+	
+	
+}

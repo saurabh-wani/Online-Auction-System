@@ -1,0 +1,26 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="pan_details")
+public class PanDetail 
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int pan_id;
+	
+	@Column
+	String pan_card_number;
+	
+	@Lob
+	@Column(length=100000)
+	private byte[] pan_card_image;
+	
+}

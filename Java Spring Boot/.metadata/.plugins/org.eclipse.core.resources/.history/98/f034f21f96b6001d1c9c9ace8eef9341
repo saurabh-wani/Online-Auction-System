@@ -1,0 +1,157 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_table")
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int userid;
+	
+	@Column
+	int usertypeid;
+	
+	@Column
+	String fname;
+	
+	@Column
+	String lname;
+	
+	@Column
+	String email;
+	
+	@Column
+	String mobilenumber;
+	
+	@Column
+	String state;
+	
+	@Column
+	String city;
+	
+	@Column
+	String pincode;
+	
+	@Column
+	String address;
+	
+	@Column
+	String gender;
+	
+	@Column
+	String pan_card_number;
+	
+	@Lob
+	@Column(name = "pan_card_image", columnDefinition = "LONGBLOB")
+	private byte[] pan_card_image;
+	
+	
+	@Column
+	String account_status;
+	
+	@ManyToOne
+	@JoinColumn()
+	Question q_id;
+	
+	@Column
+	String answer;
+	
+	
+	
+	
+
+
+	public User() {
+		super();
+	}
+
+	public User(int usertypeid, String fname, String lname, String email, String mobilenumber, Address address_id,
+			PanDetail pan_id) {
+		super();
+		this.usertypeid = usertypeid;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.mobilenumber = mobilenumber;
+		this.address_id = address_id;
+		this.pan_id = pan_id;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public int getUsertypeid() {
+		return usertypeid;
+	}
+
+	public void setUsertypeid(int usertypeid) {
+		this.usertypeid = usertypeid;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobilenumber() {
+		return mobilenumber;
+	}
+
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
+	}
+
+	public Address getAddress_id() {
+		return address_id;
+	}
+
+	public void setAddress_id(Address address_id) {
+		this.address_id = address_id;
+	}
+
+	public PanDetail getPan_id() {
+		return pan_id;
+	}
+
+	public void setPan_id(PanDetail pan_id) {
+		this.pan_id = pan_id;
+	}
+	
+	
+	
+
+}

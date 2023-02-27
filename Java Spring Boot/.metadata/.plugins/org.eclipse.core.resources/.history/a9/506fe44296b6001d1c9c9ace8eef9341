@@ -1,0 +1,44 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="question_table")
+public class Question 
+{
+	@Id
+	int qid;
+	
+	@Column
+	String question;
+
+	public Question() {
+		super();
+	}
+
+	public Question(String question) {
+		super();
+		this.question = question;
+	}
+
+	public int getQid() {
+		return qid;
+	}
+
+	public void setQid(int qid) {
+		this.qid = qid;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	
+	
+}

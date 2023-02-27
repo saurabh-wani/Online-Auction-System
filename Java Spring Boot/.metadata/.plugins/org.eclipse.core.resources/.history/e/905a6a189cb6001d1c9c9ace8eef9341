@@ -1,0 +1,104 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_table")
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int user_id;
+	
+	@ManyToOne
+	@JoinColumn(name="user_type_id")
+	UserType user_type_id;
+	
+	@Column
+	String fname;
+	
+	@Column
+	String lname;
+	
+	@Column
+	String email;
+	
+	@Column
+	String mobile;
+	
+	@Column
+	String state;
+	
+	@Column
+	String city;
+	
+	@Column
+	String pincode;
+	
+	@Column
+	String address;
+	
+	@Column
+	String gender;
+	
+	@Column
+	String pan_card_number;
+	
+	@Lob
+	@Column(name = "pan_card_image", columnDefinition = "LONGBLOB")
+	private byte[] pan_card_image;
+	
+	
+	@Column
+	String account_status;
+	
+	@ManyToOne
+	@JoinColumn(name="q_id")
+	Question q_id;
+	
+	@Column
+	String answer;
+	
+	@Column
+	String username;
+	
+	@Column
+	String password;
+	
+	
+
+
+	public User() {
+		super();
+	}
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	
+	
+	
+
+}
