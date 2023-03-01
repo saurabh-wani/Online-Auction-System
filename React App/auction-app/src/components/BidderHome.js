@@ -1,7 +1,53 @@
+import { Link, Outlet } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { useEffect, useState } from "react";
+
 function BidderHome() {
+  const [bidder, setBidder] = useState(null);
+  useEffect(() => {
+    const user_id = JSON.parse(localStorage.getItem("loggedUser")).user_id;
+
+    fetch("http://localhost:8080/getUser?user_id=" + user_id)
+      .then((resp) => resp.json())
+      .then((obj) => {
+        localStorage.setItem("loggedBidder", JSON.stringify(obj));
+        setBidder(obj);
+      });
+  }, []);
   return (
-    <div>
-      <h1>Bidder Successfully Logged In</h1>
+    <div className="App">
+      <header>
+        <Navbar bg="primary" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home">Auction App</Navbar.Brand>
+            <Nav className="me-auto">
+              {/* <Nav.Link href="/admin_home">Home</Nav.Link> */}
+              <Link to="products" className="nav-link px-3">
+                Products
+              </Link>
+              <Link to="my_bids" className="nav-link px-3">
+                My Bids
+              </Link>
+              <Link to="products_purchased" className="nav-link px-3">
+                Products Purchased
+              </Link>
+              <Link to="feedback_bidder" className="nav-link px-3">
+                Feedback
+              </Link>
+              <Link to="/logout" className="nav-link px-3">
+                Logout
+              </Link>
+            </Nav>
+            <h3 style={{ color: "white" }}>
+              Welcome {bidder && bidder.fname} {bidder && bidder.lname}
+            </h3>
+          </Container>
+        </Navbar>
+      </header>
+
+      <Outlet />
     </div>
   );
 }

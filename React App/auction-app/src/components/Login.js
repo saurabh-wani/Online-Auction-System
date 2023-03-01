@@ -1,5 +1,7 @@
 import { useReducer, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "./slice";
 
 const init = {
   username: "",
@@ -16,45 +18,52 @@ const reducer = (state, action) => {
   }
 };
 
-const sendData = (e) => {
-  e.preventDefault();
-};
-
 function Login() {
   const [info, dispatch] = useReducer(reducer, init);
 
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+  const reduxAction = useDispatch();
 
-  const reqOptions = {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(info),
-  };
+  const sendData = (e) => {
+    e.preventDefault();
 
-  fetch("http://localhost:8080/checklogin", reqOptions)
-    .then((resp) => {
-      if (resp.ok) return resp.text();
-      // else throw new Error("Server Error");
-    })
-    .then((text) => (text.length ? JSON.parse(text) : {}))
-    .then((obj) => {
-      if (Object.keys(obj).length === 0) {
-        setMsg("Wrong Username or Password");
-      } else {
-        if (obj.account_status === "pending") {
-          alert("Request is still pending");
+    const reqOptions = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(info),
+    };
+
+    fetch("http://localhost:8080/checklogin", reqOptions)
+      .then((resp) => {
+        if (resp.ok) return resp.text();
+        // else throw new Error("Server Error");
+      })
+      .then((text) => (text.length ? JSON.parse(text) : {}))
+      .then((obj) => {
+        if (Object.keys(obj).length === 0) {
+          setMsg("Wrong Username or Password");
         } else {
-          if (obj.user_type_id.user_type_id === 1) {
-            navigate("/admin_home");
-          } else if (obj.user_type_id.user_type_id === 2) {
-            navigate("/seller_home");
-          } else if (obj.user_type_id.user_type_id === 3) {
-            navigate("/bidder_home");
+          if (obj.account_status === "pending") {
+            setMsg("Request is still pending");
+            // alert("Request is still pending");
+          } else {
+            reduxAction(login());
+            localStorage.setItem("loggedUser", JSON.stringify(obj));
+            if (obj.user_type_id.user_type_id === 1) {
+              setMsg("");
+              navigate("/admin_home");
+            } else if (obj.user_type_id.user_type_id === 2) {
+              setMsg("");
+              navigate("/seller_home");
+            } else if (obj.user_type_id.user_type_id === 3) {
+              setMsg("");
+              navigate("/bidder_home");
+            }
           }
         }
-      }
-    });
+      });
+  };
 
   return (
     <>
@@ -65,7 +74,6 @@ function Login() {
             <div className="text-center">
               Not registered yet? <Link to="/Signup">Sign Up</Link>
             </div>
-
             <div className="form-group mt-3">
               <label>Username</label>
               <input
@@ -94,7 +102,6 @@ function Login() {
                 {state.username.error}{" "}
               </p> */}
             </div>
-
             <div className="form-group mt-3">
               <label>Password</label>
               <input
@@ -112,7 +119,7 @@ function Login() {
                 }}
               />
             </div>
-
+            <br />
             <button
               type="submit"
               className="btn btn-primary mb-3"
@@ -122,6 +129,7 @@ function Login() {
             >
               Submit
             </button>
+
             <button
               type="reset"
               className="btn btn-primary mb-3"
@@ -131,14 +139,14 @@ function Login() {
             >
               Clear
             </button>
-
             <p className="text-center mt-2">
               <a href="#">Forgot password?</a>
             </p>
+            <br />
+            <p className="error">{msg}</p>
           </div>
         </form>
-        {/* <p>{JSON.stringify(info)}</p>
-        <p>{msg}</p> */}
+        {/* <p>{JSON.stringify(info)}</p>*/}
       </div>
     </>
   );

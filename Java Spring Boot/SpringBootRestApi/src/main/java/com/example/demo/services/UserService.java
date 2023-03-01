@@ -33,4 +33,9 @@ public class UserService {
 	}
 	return u;
 	}
+	
+	public User getById(int user_id)
+	{
+		return urepo.getById(user_id).get();
+	}
 }
