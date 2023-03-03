@@ -38,4 +38,10 @@ public class UserService {
 	{
 		return urepo.getById(user_id).get();
 	}
+	
+	public User saveUser(User u)
+	{
+		return urepo.save(u);
+	}
+	
 }

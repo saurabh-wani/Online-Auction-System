@@ -26,6 +26,9 @@ import Products from "./components/Products";
 import MyBids from "./components/MyBids";
 import ProductsPurchased from "./components/ProductsPurchased";
 import FeedbackBidder from "./components/FeedbackBidder";
+import ApprovedProducts from "./components/ApprovedProducts";
+import BidderRegistration from "./components/BidderRegistration";
+import SellerRegistration from "./components/SellerRegistration";
 
 function App() {
   const mystate = useSelector((state) => state.logged);
@@ -48,7 +51,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />}>
+            <Route
+              path="bidder_registration"
+              element={<BidderRegistration />}
+            />
+            <Route
+              path="seller_registration"
+              element={<SellerRegistration />}
+            />
+          </Route>
           <Route path="/admin_home" element={<AdminHome />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/admin_home" element={<AdminHome />}>
@@ -69,6 +81,7 @@ function App() {
               path="ongoing_auctions"
               element={<OngoingAuctionsSeller />}
             />
+            <Route path="approved_products" element={<ApprovedProducts />} />
             <Route path="products_sold" element={<ProductsSold />} />
             <Route path="feedback_seller" element={<FeedbackSeller />} />
           </Route>

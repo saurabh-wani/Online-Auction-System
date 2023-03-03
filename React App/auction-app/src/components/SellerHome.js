@@ -27,6 +27,9 @@ function SellerHome() {
               <Link to="add_product" className="nav-link px-3">
                 Add Product
               </Link>
+              <Link to="approved_products" className="nav-link px-3">
+                Approved Products
+              </Link>
               <Link to="ongoing_auctions" className="nav-link px-3">
                 Ongoing Auctions
               </Link>

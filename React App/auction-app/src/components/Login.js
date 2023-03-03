@@ -4,26 +4,103 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "./slice";
 
 const init = {
+  username: { value: "", hasError: true, touched: false, error: "" },
+  password: { value: "", hasError: true, touched: false, error: "" },
+  isFormValid: false,
+};
+
+const init1 = {
   username: "",
   password: "",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "update": {
+      const { username, value, hasError, error, touched, isFormValid } =
+        action.data;
+      return {
+        ...state,
+        [username]: { username, value, hasError, error, touched },
+        isFormValid,
+      };
+    }
+    case "reset": {
+      return init;
+    }
+  }
+};
+
+const reducer1 = (state, action) => {
+  switch (action.type) {
     case "update":
       return { ...state, [action.fld]: action.value };
 
     case "reset":
-      return init;
+      return init1;
   }
 };
 
 function Login() {
   const [info, dispatch] = useReducer(reducer, init);
+  const [info1, dispatch1] = useReducer(reducer1, init1);
 
   const [msg, setMsg] = useState("");
+
   const navigate = useNavigate();
+
   const reduxAction = useDispatch();
+
+  const onInputChange = (username, value) => {
+    const { hasError, error } = validateData(username, value);
+    let isFormValid = true;
+
+    for (const key in info) {
+      const item = info[key];
+      if (info[key].hasError === true) {
+        isFormValid = false;
+        break;
+      }
+      // else if(key!==username && item.hasError)
+      // {
+      //     isFormValid=false;
+      //     break
+      // }
+    }
+    dispatch({
+      type: "update",
+      data: { username, value, hasError, error, touched: true, isFormValid },
+    });
+  };
+
+  const validateData = (name, value) => {
+    let hasError = false;
+    let error = "";
+    switch (name) {
+      case "username":
+        let regex = /^[A-Za-z0-9!@#$%^&*]{4,16}$/;
+
+        if (!regex.test(value)) {
+          hasError = true;
+          error =
+            "username should be first letter capital rest small in 4-15 character";
+        }
+
+        break;
+      case "password":
+        let regex1 =
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+        if (!regex1.test(value)) {
+          hasError = true;
+          error =
+            "Minimum eight characters, at least one letter, one number and one special character";
+        }
+    }
+    // console.log(info.username.value);
+    // console.log(info.password.value);
+    return { hasError, error };
+  };
 
   const sendData = (e) => {
     e.preventDefault();
@@ -31,7 +108,7 @@ function Login() {
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(info),
+      body: JSON.stringify(info1),
     };
 
     fetch("http://localhost:8080/checklogin", reqOptions)
@@ -81,15 +158,29 @@ function Login() {
                 name="username"
                 id="username"
                 className="form-control mt-1"
-                value={info.username}
+                value={info1.username}
+                onKeyDown={(e) => {
+                  onInputChange("username", e.target.value);
+                }}
                 onChange={(e) => {
-                  dispatch({
+                  dispatch1({
                     type: "update",
                     fld: "username",
                     value: e.target.value,
                   });
                 }}
               />
+              <p
+                style={{
+                  display:
+                    info.username.touched && info.username.hasError
+                      ? "block"
+                      : "none",
+                  color: "red",
+                }}
+              >
+                {info.username.error}{" "}
+              </p>
               {/* <p
                 style={{
                   display:
@@ -109,15 +200,29 @@ function Login() {
                 name="password"
                 id="password"
                 className="form-control mt-1"
-                value={info.password}
+                value={info1.password}
+                onKeyDown={(e) => {
+                  onInputChange("password", e.target.value);
+                }}
                 onChange={(e) => {
-                  dispatch({
+                  dispatch1({
                     type: "update",
                     fld: "password",
                     value: e.target.value,
                   });
                 }}
               />
+              <p
+                style={{
+                  display:
+                    info.password.touched && info.password.hasError
+                      ? "block"
+                      : "none",
+                  color: "red",
+                }}
+              >
+                {info.password.error}{" "}
+              </p>
             </div>
             <br />
             <button
@@ -146,7 +251,7 @@ function Login() {
             <p className="error">{msg}</p>
           </div>
         </form>
-        {/* <p>{JSON.stringify(info)}</p>*/}
+        {/* <p>{JSON.stringify(info1)}</p> */}
       </div>
     </>
   );

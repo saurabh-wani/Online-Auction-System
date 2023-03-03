@@ -1,0 +1,6 @@
+package com.example.demo.entities;
+
+public class Seller {
+	  int user_type_id,qid;
+	  String fname,lname,email,mobile,state,city,pincode,address,gender,pan_card_number,account_status,answer,username,password;
+}

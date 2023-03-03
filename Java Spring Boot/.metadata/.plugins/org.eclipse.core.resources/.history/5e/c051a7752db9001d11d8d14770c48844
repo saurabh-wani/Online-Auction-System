@@ -1,0 +1,32 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Question;
+import com.example.demo.entities.User;
+import com.example.demo.entities.UserType;
+import com.example.demo.services.QuestionService;
+import com.example.demo.services.UserService;
+import com.example.demo.services.UserTypeService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class RegisterController {
+
+	@Autowired
+	UserTypeService utserv;
+	
+	@Autowired
+	QuestionService qserv;
+	
+	@PostMapping("/regSeller")
+	public User regSeller(@RequestBody User seller)
+	{
+		UserType user_type_id=utserv.getUserType(2);
+		Question q_id = qserv.getQuestion(seller.getQ_id());
+	}
+}
