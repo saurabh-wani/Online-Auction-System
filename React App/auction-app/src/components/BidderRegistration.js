@@ -188,8 +188,31 @@ export default function BidderRegistration() {
         else throw new Error("Server Error");
       })
       .then((obj) => {
-        alert("Registration succesful.Try Login");
-        navigate("/");
+        const fd = new FormData();
+        fd.append("file", file);
+        const reqOptions1 = {
+          method: "POST",
+          //headers: { "content-type": "multipart/form-data" },
+          body: fd,
+        };
+        fetch(
+          "http://localhost:8080/uploadpancardimage/" + obj.user_id,
+          reqOptions1
+        )
+          .then((resp) => resp.json())
+          .then((obj) => {
+            if (obj) {
+              alert("Registration succesful.Try Login.");
+              navigate("/");
+            } else {
+              alert(
+                "Registration succesful.Pan card image submission failed.Try Login"
+              );
+              navigate("/");
+            }
+          });
+        // alert("Registration succesful.Try Login.");
+        // navigate("/");
       })
       .catch((error) => alert("server error"));
 
@@ -618,6 +641,7 @@ export default function BidderRegistration() {
                     className="form-control mt-1"
                     placeholder=""
                     onChange={(e) => setFile(e.target.files[0])}
+                    required
                   />
                 </div>
 
@@ -784,6 +808,7 @@ export default function BidderRegistration() {
           </div>
         </div>
         <p>{JSON.stringify(info1)}</p>
+        <p>{file && file.name}</p>
         {/* <p>{JSON.stringify(info)}</p> */}
       </form>
     </div>

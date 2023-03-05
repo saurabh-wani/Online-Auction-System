@@ -44,4 +44,11 @@ public class UserService {
 		return urepo.save(u);
 	}
 	
+	public boolean upload(int user_id,byte [] pan_card_image)
+	{
+		if(urepo.uploadPan(user_id,pan_card_image)==1)
+			return true;
+		else
+			return false;
+	}
 }

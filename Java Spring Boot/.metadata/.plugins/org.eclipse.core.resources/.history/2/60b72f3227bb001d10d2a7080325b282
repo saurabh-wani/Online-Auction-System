@@ -1,0 +1,19 @@
+package com.example.demo.repositories;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Product;
+
+@Transactional
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+	
+	 @Modifying
+	 @Query("update User set pan_card_image=:pan_card_image where user_id=:user_id")
+	 public int uploadPan(int user_id,byte [] pan_card_image);
+}
