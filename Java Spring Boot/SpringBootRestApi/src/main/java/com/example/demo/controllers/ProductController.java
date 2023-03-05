@@ -1,9 +1,13 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -87,6 +91,25 @@ public class ProductController {
 		}
 		return flag;
 	}
+	
+	@GetMapping("/pendingproductsforapproval")
+	public List<Product> pendingProducts()
+	{
+		return pserv.pendingProducts();
+	}
+	
+	@PutMapping("/approveproduct/{P_Id}")
+	public int approveProduct(@PathVariable("P_Id") int P_Id)
+	{
+		return pserv.approveProduct(P_Id);
+	}
+	
+	@PutMapping("/denyproduct/{P_Id}")
+	public int denyProduct(@PathVariable("P_Id") int P_Id)
+	{
+		return pserv.denyProduct(P_Id);
+	}
+	
 
 
 }

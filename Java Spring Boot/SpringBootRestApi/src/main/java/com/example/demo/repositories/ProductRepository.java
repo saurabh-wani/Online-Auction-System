@@ -1,5 +1,7 @@
 package com.example.demo.repositories;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,4 +26,18 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	 @Modifying
 	 @Query("update Product set product_image_3=:product_image_3 where P_Id=:P_Id")
 	 public int upload3(int P_Id,byte [] product_image_3);
+	 
+//		@Query("select c from Contact c where fnanme like '%a%'")
+//		public List<Contact> getAllWithA();
+		
+		@Query("select p from Product p where status='pending'")
+		public List<Product> pendingProducts();
+		
+		@Modifying
+		@Query("update Product p set p.status = 'approved' where P_Id = :P_Id")
+		public int approveProduct(int P_Id);
+		
+		@Modifying
+		@Query("update Product p set p.status = 'denied' where P_Id = :P_Id")
+		public int denyProduct(int P_Id);
 }

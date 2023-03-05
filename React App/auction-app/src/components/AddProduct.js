@@ -78,7 +78,8 @@ export default function AddProduct() {
     let error = "";
     switch (name) {
       case "product_name":
-        let regex2 = /^[A-Za-z0-9\s!@#$%^&*]{3,25}$/;
+        // let regex2 = /^[A-Za-z0-9\s,'!@#$%^&*]{3,25}$/;
+        let regex2 = /^.{3,40}$/;
 
         if (!regex2.test(value)) {
           hasError = true;
@@ -88,7 +89,8 @@ export default function AddProduct() {
         break;
 
       case "description":
-        let regex3 = /^[A-Za-z0-9\s.,!@#$%^&*]{20,150}$/;
+        // let regex3 = /^[A-Za-z0-9\s.,'!@#$%^&*]{20,150}$/;
+        let regex3 = /^.{20,150}$/;
 
         if (!regex3.test(value)) {
           hasError = true;
