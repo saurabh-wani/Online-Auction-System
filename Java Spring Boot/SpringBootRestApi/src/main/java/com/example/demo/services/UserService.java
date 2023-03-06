@@ -51,4 +51,19 @@ public class UserService {
 		else
 			return false;
 	}
+	
+	public List<User> pendingUsers()
+	{
+		return urepo.pendingUsers();
+	}
+	
+	public int approveUser(int user_id)
+	{
+		return urepo.approveUser(user_id);
+	}
+	
+	public int denyUser(int user_id)
+	{
+		return urepo.denyUser(user_id);
+	}
 }

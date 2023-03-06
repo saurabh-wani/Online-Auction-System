@@ -2,21 +2,6 @@ import { useState, useEffect, useReducer } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-// const init = {
-//   p_Id: "",
-//   status: "",
-// };
-
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case "update":
-//       return { ...state, [action.fld]: action.value };
-
-//     case "reset":
-//       return init;
-//   }
-// };
-
 function PendingProductsForApproval() {
   useEffect(() => {
     fetch("http://localhost:8080/pendingproductsforapproval")
@@ -25,12 +10,6 @@ function PendingProductsForApproval() {
   }, []);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  //   const [status, setStaus] = useState("pending");
-  //   const [info, dispatch] = useReducer(reducer, init);
-
-  //   const sendData = (e) => {
-  //     e.preventDefault();
-  //   };
 
   return (
     <div>

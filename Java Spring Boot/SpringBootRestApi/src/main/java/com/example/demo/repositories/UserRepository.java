@@ -25,4 +25,16 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 @Modifying
 	 @Query("update User set pan_card_image=:pan_card_image where user_id=:user_id")
 	 public int uploadPan(int user_id,byte [] pan_card_image);
+	 
+	 @Query("select u from User u where account_status='pending'")
+	 public List<User> pendingUsers();
+	 
+		@Modifying
+		@Query("update User u set u.account_status = 'approved' where user_id = :user_id")
+		public int approveUser(int user_id);
+		
+		@Modifying
+		@Query("update User u set u.account_status = 'denied' where user_id = :user_id")
+		public int denyUser(int user_id);
+	 
 }
