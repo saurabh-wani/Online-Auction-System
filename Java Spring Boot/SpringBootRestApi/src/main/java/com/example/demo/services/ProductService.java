@@ -62,5 +62,10 @@ public class ProductService {
 	{
 		return prepo.denyProduct(P_Id);
 	}
+	
+	public List<Product> approvedProducts(int seller_id)
+	{
+		return prepo.approvedProducts(seller_id);
+	}
 
 }

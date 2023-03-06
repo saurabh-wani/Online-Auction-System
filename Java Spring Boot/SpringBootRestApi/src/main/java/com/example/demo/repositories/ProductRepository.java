@@ -40,4 +40,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		@Modifying
 		@Query("update Product p set p.status = 'denied' where P_Id = :P_Id")
 		public int denyProduct(int P_Id);
+		
+		//select * from product where status='approved' and seller_id=5;
+		//@Query("select p from Product p where status='approved' and seller_id = :seller_id")
+		@Query(value = "select * from product where status='approved' and seller_id=?1", nativeQuery=true)
+		public List<Product> approvedProducts(int seller_id);
 }

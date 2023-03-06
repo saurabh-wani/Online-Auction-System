@@ -110,6 +110,12 @@ public class ProductController {
 		return pserv.denyProduct(P_Id);
 	}
 	
+	@GetMapping("/approvedproducts/{seller_id}")
+	public List<Product> approvedProducts(@PathVariable("seller_id") int seller_id)
+	{
+		//User seller_id=userv.getById(s_id);
+		return pserv.approvedProducts(seller_id);
+	}
 
 
 }

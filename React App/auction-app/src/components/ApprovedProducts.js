@@ -3,114 +3,71 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function ApprovedProducts() {
-  // useEffect(() => {
-  //   fetch("http://localhost:8080/pendingproductsforapproval")
-  //     .then((resp) => resp.json())
-  //     .then((data) => setProducts(data));
-  // }, []);
+  const seller_id = JSON.parse(localStorage.getItem("loggedUser")).user_id;
+  useEffect(() => {
+    fetch("http://localhost:8080/approvedproducts/" + seller_id)
+      .then((resp) => resp.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const navigate = useNavigate();
+  const [approvedproducts, setProducts] = useState([]);
+
   return (
     <div>
       <h1> Approved Products</h1>
-      {/* <table className="table table-bordered">
-        {users.map((v) => {
+      <table className="table table-bordered">
+        {approvedproducts.map((v) => {
           return (
             <tr>
               <td>
-                Users Name: {v.fname + " " + v.lname}
+                Product Name: {v.product_name}
                 <br />
-                Email: {v.email}
+                Category: {v.category_id.category_name}
                 <br />
-                Mobile: {v.mobile}
+                Description: {v.description}
                 <br />
-                Address : {v.address + ", " + v.city + " : " + v.pincode}
+                Base Price: {v.base_price}
                 <br />
-                State: {v.fname + " " + v.lname}
-                <br />
-                Gender: {v.gender}
-                <br />
-                Pan Card Number: {v.pan_card_number}
               </td>
               <td>
                 <img
-                  src={`data:image/png;base64,${v && v.pan_card_image}`}
+                  src={`data:image/png;base64,${v && v.product_image_1}`}
                   width="300"
                   height="250"
                 />
               </td>
               <td>
-                <button
-                  type="button"
-                  style={{ color: "blue" }}
-                  className="btn btn-success"
-                  onClick={(e) => {
-                    const info = {
-                      status: "approved",
-                    };
+                <form action="">
+                  <div className="form-group mt-3">
+                    <label htmlFor="start_date">Start Date</label>
+                    <input
+                      type="date"
+                      name="start_date"
+                      id="start_date"
+                      className="form-control mt-1"
+                    />
+                  </div>
 
-                    const reqOptions = {
-                      method: "PUT",
-                      //headers: { "content-type": "application/json" },
-                      // body: JSON.stringify(info),
-                    };
+                  <div className="form-group mt-3">
+                    <label htmlFor="start_date">End Date</label>
+                    <input
+                      type="date"
+                      name="end_date"
+                      id="end_date"
+                      className="form-control mt-1"
+                    />
+                  </div>
 
-                    fetch(
-                      "http://localhost:8080/approveuser/" + v.user_id,
-                      reqOptions
-                    )
-                      .then((resp) => {
-                        if (resp.ok) return resp.json();
-                        else throw new Error("Server Error");
-                      })
-                      .then((obj) => {
-                        fetch("http://localhost:8080/pendingusersforapproval")
-                          .then((resp) => resp.json())
-                          .then((data) => setUsers(data));
-                      })
-                      .catch((error) => alert("server error"));
-                  }}
-                >
-                  Approve
-                </button>
-
-                <button
-                  type="button"
-                  style={{ color: "blue" }}
-                  className="btn btn-warning"
-                  onClick={(e) => {
-                    const info = {
-                      status: "denied",
-                    };
-
-                    const reqOptions = {
-                      method: "PUT",
-                      //headers: { "content-type": "application/json" },
-                      // body: JSON.stringify(info),
-                    };
-
-                    fetch(
-                      "http://localhost:8080/denyuser/" + v.user_id,
-                      reqOptions
-                    )
-                      .then((resp) => {
-                        if (resp.ok) return resp.json();
-                        else throw new Error("Server Error");
-                      })
-                      //.then((obj) => navigate(-1))
-                      .then((obj) => {
-                        fetch("http://localhost:8080/pendingusersforapproval")
-                          .then((resp) => resp.json())
-                          .then((data) => setUsers(data));
-                      })
-                      .catch((error) => alert("server error"));
-                  }}
-                >
-                  Deny
-                </button>
+                  <button type="submit" className="btn btn-success text-center">
+                    Submit
+                  </button>
+                </form>
               </td>
             </tr>
           );
         })}
-      </table> */}
+      </table>
     </div>
   );
 }
