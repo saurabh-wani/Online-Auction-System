@@ -1,0 +1,31 @@
+package com.example.demo.services;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Calendar;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.BiddingTransaction;
+import com.example.demo.repositories.BiddingRepository;
+
+@Service
+public class BiddingService {
+
+	@Autowired
+	BiddingRepository brepo;
+	
+	public BiddingTransaction findMaxBid(int P_Id)
+	{
+		return brepo.findMaxBid(P_Id);
+	}
+	
+	public BiddingTransaction bid(int P_Id,int bidder_id,float bid_price)
+	{
+		
+		BiddingTransaction bt= new BiddingTransaction(P_Id,bidder_id,bid_price);
+		
+		return brepo.save()
+	}
+}

@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -43,6 +44,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		
 		//select * from product where status='approved' and seller_id=5;
 		//@Query("select p from Product p where status='approved' and seller_id = :seller_id")
-		@Query(value = "select * from product where status='approved' and seller_id=?1", nativeQuery=true)
+		@Query(value = "select * from product where status='approved' and seller_id=?1 and start_date is null and end_date is null", nativeQuery=true)
 		public List<Product> approvedProducts(int seller_id);
+		
+		@Modifying
+		@Query("update Product p set p.start_date=:start_date,p.end_date=:end_date where P_Id = :P_Id")
+		public int startAuction(Date start_date,Date end_date,int P_Id);
+		
+		@Query(value = "select * from product where status='approved' and curdate() between start_date and end_date", nativeQuery=true)
+		public List<Product> current_date_products();
 }

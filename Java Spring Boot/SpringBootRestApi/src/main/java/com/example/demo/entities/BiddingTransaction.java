@@ -1,0 +1,101 @@
+package com.example.demo.entities;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bidding_transaction")
+public class BiddingTransaction {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int bidding_transaction_id;
+	
+	@ManyToOne
+	@JoinColumn(name="P_Id")
+	Product P_Id;
+	
+	@ManyToOne
+	@JoinColumn(name="bidder_id", referencedColumnName="user_id")
+	User bidder_id;
+	
+	@Column
+	float bid_price;
+	
+	@Column
+	Date bid_time;
+
+	public BiddingTransaction(Product p_Id, User bidder_id, float bid_price, Date bid_time) {
+		super();
+		P_Id = p_Id;
+		this.bidder_id = bidder_id;
+		this.bid_price = bid_price;
+		this.bid_time = bid_time;
+	}
+	
+	
+
+	public BiddingTransaction(Product p_Id, User bidder_id, float bid_price) {
+		super();
+		P_Id = p_Id;
+		this.bidder_id = bidder_id;
+		this.bid_price = bid_price;
+	}
+
+
+
+	public BiddingTransaction() {
+		super();
+	}
+
+	public int getBidding_transaction_id() {
+		return bidding_transaction_id;
+	}
+
+	public void setBidding_transaction_id(int bidding_transaction_id) {
+		this.bidding_transaction_id = bidding_transaction_id;
+	}
+
+	public Product getP_Id() {
+		return P_Id;
+	}
+
+	public void setP_Id(Product p_Id) {
+		P_Id = p_Id;
+	}
+
+	public User getBidder_id() {
+		return bidder_id;
+	}
+
+	public void setBidder_id(User bidder_id) {
+		this.bidder_id = bidder_id;
+	}
+
+	public float getBid_price() {
+		return bid_price;
+	}
+
+	public void setBid_price(float bid_price) {
+		this.bid_price = bid_price;
+	}
+
+	public Date getBid_time() {
+		return bid_time;
+	}
+
+	public void setBid_time(Date bid_time) {
+		this.bid_time = bid_time;
+	}
+	
+	
+
+}

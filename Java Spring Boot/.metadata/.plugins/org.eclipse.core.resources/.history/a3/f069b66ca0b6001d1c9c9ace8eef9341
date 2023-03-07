@@ -1,9 +1,0 @@
-package com.example.demo.entities;
-
-public class LoginCheck {
-	String username;
-	String password;
-
-	
-	
-}

@@ -1,0 +1,17 @@
+package com.example.demo.repositories;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.BiddingTransaction;
+
+@Transactional
+@Repository
+public interface BiddingRepository extends JpaRepository<BiddingTransaction, Integer> {
+
+	@Query(value = "select * from bidding_transaction where P_Id=:P_Id group by P_ID having bid_price=max(bid_price) ", nativeQuery=true)
+	public BiddingTransaction findMaxBid(int P_Id);
+}

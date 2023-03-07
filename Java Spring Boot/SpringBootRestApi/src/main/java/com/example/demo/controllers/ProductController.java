@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Auction;
+import com.example.demo.entities.BiddingTransaction;
 import com.example.demo.entities.Category;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.ProductReg;
+import com.example.demo.entities.ProductWithBid;
 import com.example.demo.entities.Question;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserReg;
 import com.example.demo.entities.UserType;
+import com.example.demo.services.BiddingService;
 import com.example.demo.services.CategoryService;
 import com.example.demo.services.ProductService;
 import com.example.demo.services.UserService;
@@ -35,6 +41,9 @@ public class ProductController {
 	
 	@Autowired
 	UserService userv;
+	
+	@Autowired
+	BiddingService bserv;
 	
 	@PostMapping("/regproduct")
 	public Product regSeller(@RequestBody ProductReg product)
@@ -117,5 +126,33 @@ public class ProductController {
 		return pserv.approvedProducts(seller_id);
 	}
 
-
+	@PostMapping("/startauction")
+	public int startAuction(Auction auction)
+	{
+		System.out.println(auction.getP_Id() + " " + auction.getStart_date() + " " + auction.getEnd_date());
+		Date start_date = Date.valueOf(auction.getStart_date());
+		Date end_date = Date.valueOf(auction.getEnd_date());
+		int P_Id = Integer.parseInt(auction.getP_Id());
+		
+		
+		return pserv.startAuction(start_date,end_date,P_Id);
+	}
+	
+	@GetMapping("/products")
+	public List<ProductWithBid> products()
+	{
+		List<Product> products=pserv.current_date_products();
+		List<ProductWithBid> productsWithBids = new ArrayList<>();
+		for(Product p:products)
+		{
+			System.out.println(p.getP_Id());
+			BiddingTransaction bt= bserv.findMaxBid(p.getP_Id());
+			//System.out.println(bt.getBid_price());
+			productsWithBids.add(new ProductWithBid(p,bt));
+			
+		}
+		
+		return productsWithBids;
+	}
+	
 }

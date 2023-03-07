@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,16 @@ public class ProductService {
 	public List<Product> approvedProducts(int seller_id)
 	{
 		return prepo.approvedProducts(seller_id);
+	}
+	
+	public int startAuction(Date start_date,Date end_date,int P_Id)
+	{
+		return prepo.startAuction(start_date,end_date,P_Id);
+	}
+	
+	public List<Product> current_date_products()
+	{
+		return prepo.current_date_products();
 	}
 
 }

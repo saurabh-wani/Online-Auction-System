@@ -1,0 +1,14 @@
+package com.example.demo.entities;
+
+public class ProductWithBid {
+
+	Product P_Id;
+	BiddingTransaction bidding_transaction_id;
+	public ProductWithBid(Product P_Id, BiddingTransaction bidding_transaction_id) {
+		super();
+		this.P_Id = P_Id;
+		this.bidding_transaction_id = bidding_transaction_id;
+	}
+	
+	
+}

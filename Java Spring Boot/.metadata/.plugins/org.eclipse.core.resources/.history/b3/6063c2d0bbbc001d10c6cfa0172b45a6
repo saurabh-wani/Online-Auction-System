@@ -1,0 +1,17 @@
+package com.example.demo.repositories;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.BiddingTransaction;
+
+@Transactional
+@Repository
+public interface BiddingRepository extends JpaRepository<BiddingTransaction, Integer> {
+
+	@Query(value = "select * from product where status='approved' and curdate() between start_date and end_date", nativeQuery=true)
+	public BiddingTransaction findMaxBid();
+}

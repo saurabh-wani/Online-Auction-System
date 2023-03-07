@@ -1,0 +1,36 @@
+package com.example.demo.entities;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bidding_transaction")
+public class BidddingTransaction {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int bidding_transaction_id;
+	
+	@ManyToOne
+	@JoinColumn(name="P_Id")
+	Product P_Id;
+	
+	@ManyToOne
+	@JoinColumn(name="bidder_id", referencedColumnName="user_id")
+	User bidder_id;
+	
+	@Column
+	float bid_price;
+	
+	@Column
+	Date bid_time;
+
+}

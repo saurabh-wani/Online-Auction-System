@@ -1,0 +1,19 @@
+package com.example.demo.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.BiddingTransaction;
+import com.example.demo.repositories.BiddingRepository;
+
+@Service
+public class BiddingService {
+
+	@Autowired
+	BiddingRepository brepo;
+	
+	public BiddingTransaction findMaxBid()
+	{
+		brepo.findMaxBid();
+	}
+}

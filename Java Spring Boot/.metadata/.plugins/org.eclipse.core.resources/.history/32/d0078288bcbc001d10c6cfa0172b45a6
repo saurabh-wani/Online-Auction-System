@@ -1,0 +1,6 @@
+package com.example.demo.entities;
+
+public class ProductWithBid {
+
+	Product 
+}
