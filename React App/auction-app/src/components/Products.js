@@ -24,11 +24,11 @@ export default function Products() {
             <tr>
               {console.log(v.p_Id.p_Id)}
               <td>
-                <h3>{v.p_Id.product_name}</h3>
-                <h4>{v.p_Id.category_id.category_name}</h4>
-                <p>{v.p_Id.description}</p>
+                <h3>Product Name : {v.p_Id.product_name}</h3>
+                <h4>Product Category : {v.p_Id.category_id.category_name}</h4>
+                <p>Description: {v.p_Id.description}</p>
               </td>
-              <td>
+              <td width={400} height={350}>
                 {/* <div
                   id="carouselExampleControls"
                   class="carousel slide"
@@ -101,8 +101,8 @@ export default function Products() {
                       src={`data:image/png;base64,${
                         v && v.p_Id.product_image_1
                       }`}
-                      width="450"
-                      height="350"
+                      width="400"
+                      height="300"
                       alt="First slide"
                     />
                   </Carousel.Item>
@@ -112,8 +112,8 @@ export default function Products() {
                       src={`data:image/png;base64,${
                         v && v.p_Id.product_image_2
                       }`}
-                      width="450"
-                      height="350"
+                      width="400"
+                      height="300"
                       alt="Second slide"
                     />
                     {/* 
@@ -130,8 +130,8 @@ export default function Products() {
                       src={`data:image/png;base64,${
                         v && v.p_Id.product_image_3
                       }`}
-                      width="450"
-                      height="330"
+                      width="400"
+                      height="300"
                       alt="Third slide"
                     />
                   </Carousel.Item>

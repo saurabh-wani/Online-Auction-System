@@ -155,4 +155,21 @@ public class ProductController {
 		return productsWithBids;
 	}
 	
+	@GetMapping("/ongoingauctionforseller/{seller_id}")
+	public List<ProductWithBid> ongoingAuctionForSeller(@PathVariable("seller_id") int seller_id)
+	{
+		List<Product> products=pserv.ongoingAuctionForSellers(seller_id);
+		List<ProductWithBid> productsWithBids = new ArrayList<>();
+		for(Product p:products)
+		{
+			System.out.println(p.getP_Id());
+			BiddingTransaction bt= bserv.findMaxBid(p.getP_Id());
+			//System.out.println(bt.getBid_price());
+			productsWithBids.add(new ProductWithBid(p,bt));
+			
+		}
+		
+		return productsWithBids;
+	}
+	
 }

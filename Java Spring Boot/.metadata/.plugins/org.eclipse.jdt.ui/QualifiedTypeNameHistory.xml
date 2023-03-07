@@ -15,7 +15,6 @@
     <fullyQualifiedTypeName name="com.example.demo.repositories.QuestionRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.services.QuestionService"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Question"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.UserReg"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
@@ -44,14 +43,12 @@
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductWithBid"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.example.demo.services.BiddingService"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.BiddingTransaction"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.ProductRepository"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.Product"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.UserRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.User"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.BidEntry"/>
     <fullyQualifiedTypeName name="javax.websocket.server.PathParam"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Product"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 </qualifiedTypeNameHistroy>

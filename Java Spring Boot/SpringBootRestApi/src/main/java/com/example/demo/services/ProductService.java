@@ -78,5 +78,10 @@ public class ProductService {
 	{
 		return prepo.current_date_products();
 	}
+	
+	public List<Product> ongoingAuctionForSellers(int seller_id)
+	{
+		return prepo.ongoingAuctionForSellers(seller_id);
+	}
 
 }
