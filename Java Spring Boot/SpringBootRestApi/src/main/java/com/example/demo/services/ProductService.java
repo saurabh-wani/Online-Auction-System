@@ -83,5 +83,10 @@ public class ProductService {
 	{
 		return prepo.ongoingAuctionForSellers(seller_id);
 	}
+	
+	public List<Product> getCompletedAuctionProducts()
+	{
+		return prepo.getCompletedAuctionProducts();
+	}
 
 }

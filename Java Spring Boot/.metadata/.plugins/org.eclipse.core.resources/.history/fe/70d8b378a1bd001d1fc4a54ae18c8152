@@ -1,0 +1,16 @@
+package com.example.demo.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bidding_table")
+public class Bidding 
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int bid_id;
+}

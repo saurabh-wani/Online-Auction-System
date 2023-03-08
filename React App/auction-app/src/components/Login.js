@@ -127,6 +127,9 @@ function Login() {
           } else {
             reduxAction(login());
             localStorage.setItem("loggedUser", JSON.stringify(obj));
+            const user_id = JSON.parse(
+              localStorage.getItem("loggedUser")
+            ).user_id;
             if (obj.user_type_id.user_type_id === 1) {
               setMsg("");
               navigate("/admin_home");

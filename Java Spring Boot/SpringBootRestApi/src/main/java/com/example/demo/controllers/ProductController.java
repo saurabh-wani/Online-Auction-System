@@ -127,12 +127,12 @@ public class ProductController {
 	}
 
 	@PostMapping("/startauction")
-	public int startAuction(Auction auction)
+	public int startAuction(@RequestBody Auction auction)
 	{
 		System.out.println(auction.getP_Id() + " " + auction.getStart_date() + " " + auction.getEnd_date());
 		Date start_date = Date.valueOf(auction.getStart_date());
 		Date end_date = Date.valueOf(auction.getEnd_date());
-		int P_Id = Integer.parseInt(auction.getP_Id());
+		int P_Id = auction.getP_Id();
 		
 		
 		return pserv.startAuction(start_date,end_date,P_Id);

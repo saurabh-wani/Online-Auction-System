@@ -1,0 +1,42 @@
+package com.example.demo.entities;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bidding_table")
+public class Bidding 
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int bid_id;
+	
+	@OneToOne
+	@JoinColumn()
+	Product P_Id;
+	
+	@Column
+	float base_price;
+	
+	@ManyToOne
+	@JoinColumn()
+	User bidder_id;
+	
+	@Column
+	Date start_date;
+	
+	@Column
+	Date end_date;
+	
+	Final_Bid_price decimal(11,2) 
+	Bidding_Status varchar(45)
+}

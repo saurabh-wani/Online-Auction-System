@@ -1,7 +1,7 @@
 package com.example.demo.entities;
 
 public class Auction {
-	String P_Id;
+	int P_Id;
 	String start_date;
 	String end_date;
 	
@@ -11,9 +11,9 @@ public class Auction {
 
 
 
-	public Auction(String P_Id, String start_date, String end_date) {
+	public Auction(int p_Id, String start_date, String end_date) {
 		super();
-		this.P_Id = P_Id;
+		this.P_Id = p_Id;
 		this.start_date = start_date;
 		this.end_date = end_date;
 	}
@@ -21,13 +21,13 @@ public class Auction {
 	
 
 
-	public String getP_Id() {
+	public int getP_Id() {
 		return P_Id;
 	}
 
 
 
-	public void setP_Id(String p_Id) {
+	public void setP_Id(int p_Id) {
 		P_Id = p_Id;
 	}
 

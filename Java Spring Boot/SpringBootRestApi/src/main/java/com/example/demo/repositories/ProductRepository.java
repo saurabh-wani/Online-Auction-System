@@ -56,4 +56,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		
 		@Query(value = "select * from product where status='approved' and seller_id=:seller_id and curdate() between start_date and end_date", nativeQuery=true)
 		public List<Product> ongoingAuctionForSellers(int seller_id);
+		
+		@Query(value = "select * from product where curdate() > end_date", nativeQuery=true)
+		public List<Product> getCompletedAuctionProducts();
 }

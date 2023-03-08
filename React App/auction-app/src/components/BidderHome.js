@@ -6,9 +6,8 @@ import { useEffect, useState } from "react";
 
 function BidderHome() {
   const [bidder, setBidder] = useState(null);
+  const user_id = JSON.parse(localStorage.getItem("loggedUser")).user_id;
   useEffect(() => {
-    const user_id = JSON.parse(localStorage.getItem("loggedUser")).user_id;
-
     fetch("http://localhost:8080/getUser?user_id=" + user_id)
       .then((resp) => resp.json())
       .then((obj) => {
@@ -21,9 +20,11 @@ function BidderHome() {
       <header>
         <Navbar bg="primary" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Auction App</Navbar.Brand>
+            <Navbar.Brand>Auction App</Navbar.Brand>
             <Nav className="me-auto">
-              {/* <Nav.Link href="/admin_home">Home</Nav.Link> */}
+              <Link to="home" className="nav-link px-3">
+                Home
+              </Link>
               <Link to="products" className="nav-link px-3">
                 Products
               </Link>

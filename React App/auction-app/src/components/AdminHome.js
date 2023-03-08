@@ -8,8 +8,10 @@ import { useEffect, useState } from "react";
 // import PendingUsersForApproval from "./PendingUsersForApproval";
 // import SoldProducts from "./SoldProducts";
 // import OngoingAuctions from "./OngoingAuctions";
+import { useNavigate } from "react-router-dom";
 
 function AdminHome() {
+  const navigate = useNavigate();
   const [admin, setAdmin] = useState(null);
   useEffect(() => {
     const user_id = JSON.parse(localStorage.getItem("loggedUser")).user_id;
@@ -21,6 +23,7 @@ function AdminHome() {
         setAdmin(obj);
       });
   }, []);
+
   return (
     <div className="App">
       <header>
@@ -28,7 +31,9 @@ function AdminHome() {
           <Container>
             <Navbar.Brand href="#home">Auction App</Navbar.Brand>
             <Nav className="me-auto">
-              {/* <Nav.Link href="/admin_home">Home</Nav.Link> */}
+              <Link to="home" className="nav-link px-3">
+                Home
+              </Link>
               <Link to="products_approval" className="nav-link px-3">
                 Products Approval
               </Link>
@@ -53,6 +58,7 @@ function AdminHome() {
       </header>
 
       <Outlet />
+      {/* {navigate("home")} */}
     </div>
   );
 }
