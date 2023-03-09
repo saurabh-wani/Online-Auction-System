@@ -28,6 +28,8 @@ export default function SellerHomeHome() {
                 <br />
                 Base Price: {v.p_Id.base_price}
                 <br />
+                Final Bid Price: {v.final_bid_price}
+                <br />
               </td>
               <td width={280} height={200}>
                 <img
@@ -43,8 +45,6 @@ export default function SellerHomeHome() {
                 <br /> */}
                 Bidder Name: {v.bidder_id.fname + " " + v.bidder_id.lname}
                 <br />
-                Final Bid Price: {v.final_bid_price}
-                <br />
                 Bidder Address:{" "}
                 {v.bidder_id.address +
                   ", " +
@@ -55,7 +55,17 @@ export default function SellerHomeHome() {
                   v.bidder_id.state}
                 <br />
                 Bidder Mobile Number: {v.bidder_id.mobile}
-                <h6>Payment status:{" " + v.bidding_status}</h6>
+                <h6
+                  style={{
+                    color:
+                      v.bidding_status === "payment done" ? "green" : "grey",
+                  }}
+                >
+                  Payment status:
+                  {v.bidding_status === "payment done"
+                    ? " Payment Done"
+                    : " " + v.bidding_status}
+                </h6>
               </td>
             </tr>
           );

@@ -42,6 +42,7 @@ public class Bidding
 	
 	@Column
 	String bidding_status;
+	
 
 	public Bidding() {
 		super();
