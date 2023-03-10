@@ -45,7 +45,17 @@ export default function AdminHomeHome() {
                 <br />
                 Final Bid Price: {v.final_bid_price}
                 <br />
-                Payment status:{v.bidding_status}
+                <p
+                  style={{
+                    color:
+                      v.bidding_status === "Payment not done yet"
+                        ? "red"
+                        : "green",
+                  }}
+                >
+                  {" "}
+                  Payment status:{v.bidding_status}
+                </p>
               </td>
             </tr>
           );

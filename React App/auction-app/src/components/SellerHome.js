@@ -20,7 +20,7 @@ function SellerHome() {
       <header>
         <Navbar bg="primary" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Auction App</Navbar.Brand>
+            <Navbar.Brand>Auction App</Navbar.Brand>
             <Nav className="me-auto">
               <Link to="home" className="nav-link px-3">
                 Home
@@ -37,9 +37,9 @@ function SellerHome() {
               <Link to="products_sold" className="nav-link px-3">
                 Products Sold
               </Link>
-              <Link to="feedback_seller" className="nav-link px-3">
+              {/* <Link to="feedback_seller" className="nav-link px-3">
                 Feedback
-              </Link>
+              </Link> */}
               <Link to="/logout" className="nav-link px-3">
                 Logout
               </Link>

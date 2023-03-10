@@ -1,0 +1,28 @@
+package com.example.demo.entities;
+
+public class ProductPurchased {
+	ProductSold ps;
+	Feedback feedback;
+	public ProductPurchased(ProductSold ps, Feedback f) {
+		super();
+		this.ps = ps;
+		this.f = f;
+	}
+	public ProductPurchased() {
+		super();
+	}
+	public ProductSold getPs() {
+		return ps;
+	}
+	public void setPs(ProductSold ps) {
+		this.ps = ps;
+	}
+	public Feedback getF() {
+		return f;
+	}
+	public void setF(Feedback f) {
+		this.f = f;
+	}
+	
+	
+}

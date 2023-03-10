@@ -15,7 +15,7 @@ export default function MyBids() {
   return (
     <div>
       <h2>My Bids</h2>
-      <table>
+      <table className="table table-bordered">
         {biddings.map((v) => {
           if (v.bt.bid_price === v.highest_bid_price)
             return (

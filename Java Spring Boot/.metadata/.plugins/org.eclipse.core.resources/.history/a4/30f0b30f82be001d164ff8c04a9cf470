@@ -1,0 +1,18 @@
+package com.example.demo.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.ProductSold;
+import com.example.demo.entities.User;
+
+
+@Repository
+public interface ProductSoldRepository extends JpaRepository<ProductSold, Integer> {
+	
+	@Query("select ps from ProductSold ps where ps.bid_id.bidder=:bidder_id and ps.bid_id.getBidding_status()='payment done'")
+	public List<ProductSold> productsPurchased(User bidder_id);
+}

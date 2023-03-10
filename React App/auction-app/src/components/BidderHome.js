@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useEffect, useState } from "react";
+import BidderHomeHome from "./BidderHomeHome";
 
 function BidderHome() {
   const [bidder, setBidder] = useState(null);
@@ -34,9 +35,9 @@ function BidderHome() {
               <Link to="products_purchased" className="nav-link px-3">
                 Products Purchased
               </Link>
-              <Link to="feedback_bidder" className="nav-link px-3">
+              {/* <Link to="feedback_bidder" className="nav-link px-3">
                 Feedback
-              </Link>
+              </Link> */}
               <Link to="/logout" className="nav-link px-3">
                 Logout
               </Link>
@@ -49,6 +50,7 @@ function BidderHome() {
       </header>
 
       <Outlet />
+      {/* <BidderHomeHome /> */}
     </div>
   );
 }

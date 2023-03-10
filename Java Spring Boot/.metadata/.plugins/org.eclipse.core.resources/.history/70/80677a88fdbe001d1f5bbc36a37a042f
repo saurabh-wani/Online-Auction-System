@@ -1,0 +1,26 @@
+package com.example.demo.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Feedback;
+import com.example.demo.repositories.FeedbackRepository;
+
+@Service
+public class FeedbackService {
+	@Autowired
+	FeedbackRepository frepo;
+	
+	
+	public Feedback save(Feedback f)
+	{
+		return frepo.save(f);
+	}
+	
+	public Feedback findByPid(Product P_Id)
+	{
+		return frepo.findByPid(P_Id);
+	}
+	
+
+}

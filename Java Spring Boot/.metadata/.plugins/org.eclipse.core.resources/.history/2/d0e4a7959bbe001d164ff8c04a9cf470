@@ -1,0 +1,33 @@
+package com.example.demo.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bidding_table")
+public class Feedback {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int Feedback_Id;
+	
+	@ManyToOne
+	@JoinColumn()
+	Product P_Id;
+	
+	@ManyToOne
+	@JoinColumn()
+	User seller_Id;
+	
+	@ManyToOne
+	@JoinColumn()
+	User bidder_Id; 
+	Seller_Rating int 
+	Product_Rating int 
+	Feedback_Description varchar(300)
+
+}
