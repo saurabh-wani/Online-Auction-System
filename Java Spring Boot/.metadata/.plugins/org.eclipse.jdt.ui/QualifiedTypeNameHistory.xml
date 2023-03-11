@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.example.demo.services.UserTypeService"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.UserType"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.QuestionRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.services.QuestionService"/>
@@ -35,7 +34,6 @@
     <fullyQualifiedTypeName name="com.example.demo.entities.Mybids"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.BiddingTransaction"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.ProductSoldRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.services.ProductSoldService"/>
@@ -57,7 +55,9 @@
     <fullyQualifiedTypeName name="com.example.demo.services.FeedbackService"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Product"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.ProductSold"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Feedback"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductPurchased"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.ProductSoldSeller"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.ProductSold"/>
 </qualifiedTypeNameHistroy>
