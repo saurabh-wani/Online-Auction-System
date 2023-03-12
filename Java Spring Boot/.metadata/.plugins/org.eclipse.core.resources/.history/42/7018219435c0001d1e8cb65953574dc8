@@ -1,0 +1,72 @@
+package com.example.demo.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Forget;
+import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.Reset;
+import com.example.demo.entities.User;
+import com.example.demo.services.QuestionService;
+import com.example.demo.services.UserService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class LoginController {
+	@Autowired
+	UserService userv;
+	@Autowired
+	QuestionService qserv;
+	
+	@PostMapping("/checklogin")
+	public User checkLogin(@RequestBody LoginCheck lcheck)
+	{
+		return userv.getUser(lcheck.getUsername(), lcheck.getPassword());
+	}
+	
+	@GetMapping("/getAll")
+	public List<User> getAll()
+	{
+		return userv.getAll();
+	}
+	
+	@GetMapping("/getUser")
+	public User getUser(@RequestParam("user_id") int user_id)
+	{
+		return userv.getById(user_id);
+	}
+	
+	@PostMapping("/forget")
+	public  User checkUser(@RequestBody Forget f)
+	{
+		//Question q_id = qserv.getQuestion(f.getQ_id());
+		//System.out.println(q_id.getQuestion()+ );
+		
+		//User u=new User(q_id,f.getUsername(),f.getAnswer());
+		System.out.println(f.getQ_id()+ " " +f.getUsername() + " " +f.getAnswer());
+		return userv.check(f.getUsername(),f.getAnswer(),Integer.parseInt(f.getQ_id()));
+	}
+	
+	@PostMapping("/reset1")
+	public boolean reset(@RequestBody Reset r)
+	{
+		//return userv.savePass(r.getUsername(),r.getPassword());
+		boolean flag = true;
+		try {
+			flag = userv.savePass(r.getUsername(),r.getPassword());
+		}
+		catch(Exception e)
+		{
+			flag=false;
+		}
+		return flag;
+	} 
+
+}

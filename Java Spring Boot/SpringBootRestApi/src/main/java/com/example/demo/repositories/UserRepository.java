@@ -36,5 +36,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 		@Modifying
 		@Query("update User u set u.account_status = 'denied' where user_id = :user_id")
 		public int denyUser(int user_id);
+		
+		@Query(value= "select * from user_table where username=?1 and answer=?2 and q_id=?3", nativeQuery=true )
+		// @Query("select u from User u where q_id=?1 and usernaame=?2 and answer=?3")
+		 public Optional<User> checkUser(String username,String answerint,int q_id);
+		 
+		 @Modifying
+		 @Query("update User set password=:password where username=:username")	
+			 public int saveP(String username,String password);
 	 
 }

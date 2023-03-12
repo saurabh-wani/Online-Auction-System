@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.PassBasedEnc;
 import com.example.demo.entities.Question;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserReg;
 import com.example.demo.entities.UserType;
@@ -29,17 +31,24 @@ public class RegisterController {
 	@Autowired
 	UserService userv;
 	
+	@Autowired
+	SaltValue saltValue;;
+	
 	@PostMapping("/regseller")
 	public User regSeller(@RequestBody UserReg seller)
 	{
 		UserType user_type_id=utserv.getUserType(seller.getUser_type_id());
+		//System.out.println(SaltValue.getSalt());
+		
 		System.out.println(seller.getUser_type_id() + " " +seller.getQ_id()+ " " + seller.getPassword() + seller.getState());
 		Question q_id = qserv.getQuestion(seller.getQ_id());
+		
+		String sencrypted=PassBasedEnc.generateSecurePassword(seller.getPassword(),saltValue.getSalt());
 		
 		
 		User u=new User(user_type_id,seller.getFname(),seller.getLname(),seller.getEmail(),seller.getMobile(),seller.getState(),
 				seller.getCity(),seller.getPincode(),seller.getAddress(),seller.getGender(),seller.getPan_card_number(),
-				seller.getAccount_status(),q_id,seller.getAnswer(),seller.getUsername(),seller.getPassword());
+				seller.getAccount_status(),q_id,seller.getAnswer(),seller.getUsername(),sencrypted);
 //				UserType user_type_id, String fname, String lname, String email, String mobile, String state,
 //				String city, String pincode, String address, String gender, String pan_card_number, String account_status,
 //				Question q_id, String answer, String username, String password
@@ -53,9 +62,12 @@ public class RegisterController {
 		System.out.println(bidder.getUser_type_id() + " " +bidder.getQ_id()+ " " + bidder.getPassword() + bidder.getState());
 		Question q_id = qserv.getQuestion(bidder.getQ_id());
 		
+		String bencrypted=PassBasedEnc.generateSecurePassword(bidder.getPassword(),saltValue.getSalt());
+
+		
 		User u=new User(user_type_id,bidder.getFname(),bidder.getLname(),bidder.getEmail(),bidder.getMobile(),bidder.getState(),
 				bidder.getCity(),bidder.getPincode(),bidder.getAddress(),bidder.getGender(),bidder.getPan_card_number(),
-				bidder.getAccount_status(),q_id,bidder.getAnswer(),bidder.getUsername(),bidder.getPassword());
+				bidder.getAccount_status(),q_id,bidder.getAnswer(),bidder.getUsername(),bencrypted);
 //				UserType user_type_id, String fname, String lname, String email, String mobile, String state,
 //				String city, String pincode, String address, String gender, String pan_card_number, String account_status,
 //				Question q_id, String answer, String username, String password

@@ -32,6 +32,8 @@ import SellerRegistration from "./components/SellerRegistration";
 import AdminHomeHome from "./components/AdminHomeHome";
 import BidderHomeHome from "./components/BidderHomeHome";
 import SellerHomeHome from "./components/SellerHomeHome";
+import Password from "./components/ResetPwd";
+import Forget from "./components/Forgot";
 
 function App() {
   const mystate = useSelector((state) => state.logged);
@@ -54,6 +56,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/password" element={<Password />} />
+          <Route path="/forgot" element={<Forget />} />
           <Route path="/signup" element={<Signup />}>
             <Route
               path="bidder_registration"

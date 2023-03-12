@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.example.demo.entities.UserType"/>
-    <fullyQualifiedTypeName name="com.example.demo.repositories.QuestionRepository"/>
-    <fullyQualifiedTypeName name="com.example.demo.services.QuestionService"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.Question"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.UserReg"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
@@ -49,7 +44,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.FeedbackRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.example.demo.services.FeedbackService"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductSoldSeller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductSold"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Forget"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Reset"/>
+    <fullyQualifiedTypeName name="com.example.demo.services.QuestionService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.SaltValue"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.PassBasedEnc"/>
 </qualifiedTypeNameHistroy>

@@ -248,7 +248,7 @@ export default function SellerRegistration() {
   };
 
   return (
-    <div className="Auth-form-container">
+    <div className="Auth-form-container App1">
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
@@ -807,8 +807,8 @@ export default function SellerRegistration() {
             </button>
           </div>
         </div>
-        <p>{JSON.stringify(info1)}</p>
-        <p>{file && file.name}</p>
+        {/* <p>{JSON.stringify(info1)}</p>
+        <p>{file && file.name}</p> */}
         {/* <p>{JSON.stringify(info)}</p> */}
       </form>
     </div>

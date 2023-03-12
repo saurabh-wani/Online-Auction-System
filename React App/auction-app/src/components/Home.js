@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div>
+    <div className="App2">
       <h1>Home Page</h1>
     </div>
   );

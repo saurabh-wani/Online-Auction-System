@@ -128,9 +128,9 @@ function ApprovedProducts() {
                     Submit
                   </button>
 
-                  <p>{pId + " " + s_date + " " + e_date}</p>
+                  {/* <p>{pId + " " + s_date + " " + e_date}</p> */}
                   {/* <p>{console.log(start_date)}</p> */}
-                  <p>{JSON.stringify(info)}</p>
+                  {/* <p>{JSON.stringify(info)}</p> */}
                 </form>
               </td>
             </tr>

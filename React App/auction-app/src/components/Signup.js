@@ -158,8 +158,24 @@ import { useReducer, useState } from "react";
 //   };
 function Signup() {
   return (
-    <div className="Auth-form-container">
-      <header>
+    <div className="Auth-form-container App2">
+      <header
+        style={{
+          backgroundColor: "white",
+          // backgroundImage: "url('../images/gavel-gd01210879_640.jpg')",
+          // /* text-align: center; */
+          // backgroundAttachment: "fixed",
+          // /* Full height */
+          // height: "100vh",
+
+          // /* Center and scale the image nicely */
+          // backgroundPosition: "center",
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "cover",
+
+          // width: "100%",
+        }}
+      >
         <h3 className="text-center">You can Register as Seller or Bidder</h3>
         <h4 className="text-center">
           <Link to="bidder_registration" className="link px-3">

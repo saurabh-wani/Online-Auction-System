@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.example.demo.entities.Forget;
 import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.Reset;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.User;
+import com.example.demo.services.QuestionService;
 import com.example.demo.services.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -20,11 +24,19 @@ import com.example.demo.services.UserService;
 public class LoginController {
 	@Autowired
 	UserService userv;
+	@Autowired
+	QuestionService qserv;
+	
+	@Autowired
+	SaltValue saltValue;
 	
 	@PostMapping("/checklogin")
 	public User checkLogin(@RequestBody LoginCheck lcheck)
 	{
-		return userv.getUser(lcheck.getUsername(), lcheck.getPassword());
+		String encrypted=PassBasedEnc.generateSecurePassword(lcheck.getPassword(),saltValue.getSalt());
+		System.out.println(encrypted);
+
+		return userv.getUser(lcheck.getUsername(), encrypted);
 	}
 	
 	@GetMapping("/getAll")
@@ -38,5 +50,31 @@ public class LoginController {
 	{
 		return userv.getById(user_id);
 	}
+	
+	@PostMapping("/forget")
+	public  User checkUser(@RequestBody Forget f)
+	{
+		//Question q_id = qserv.getQuestion(f.getQ_id());
+		//System.out.println(q_id.getQuestion()+ );
+		
+		//User u=new User(q_id,f.getUsername(),f.getAnswer());
+		System.out.println(f.getQ_id()+ " " +f.getUsername() + " " +f.getAnswer());
+		return userv.check(f.getUsername(),f.getAnswer(),Integer.parseInt(f.getQ_id()));
+	}
+	
+	@PostMapping("/reset1")
+	public boolean reset(@RequestBody Reset r)
+	{
+		//return userv.savePass(r.getUsername(),r.getPassword());
+		boolean flag = true;
+		try {
+			flag = userv.savePass(r.getUsername(),r.getPassword());
+		}
+		catch(Exception e)
+		{
+			flag=false;
+		}
+		return flag;
+	} 
 
 }

@@ -147,7 +147,10 @@ function Login() {
 
   return (
     <>
-      <div className="Auth-form-container">
+      <div
+        className="Auth-form-container App2"
+        style={{ alignItems: "center" }}
+      >
         <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign In</h3>
@@ -248,7 +251,7 @@ function Login() {
               Clear
             </button>
             <p className="text-center mt-2">
-              <a href="#">Forgot password?</a>
+              <Link to="/forgot">Forget password</Link>
             </p>
             <br />
             <p className="error">{msg}</p>

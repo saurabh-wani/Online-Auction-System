@@ -66,4 +66,19 @@ public class UserService {
 	{
 		return urepo.denyUser(user_id);
 	}
+	
+	public User check(String username,String answer,int q_id)
+	{
+		//return urepo.checkUser(u.getQ_id().getQid(),u.getUsername(),u.getAnswer()).get();
+		return urepo.checkUser(username,answer,q_id).get();
+		
+	}
+	public boolean savePass(String username ,String password)
+	{
+		//return urepo.saveP(username,password);
+		if(urepo.saveP(username,password)==1)
+			return true;
+		else
+			return false; 
+	}
 }
