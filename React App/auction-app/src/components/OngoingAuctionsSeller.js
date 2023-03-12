@@ -16,7 +16,9 @@ export default function OngoingAuctionsSeller() {
   const [products, setProducts] = useState([]);
   return (
     <div>
-      <h2>Ongoing Auctions</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        Ongoing Auctions
+      </h2>
       <table className="table table-bordered">
         {products.map((v) => {
           return (
@@ -151,15 +153,19 @@ export default function OngoingAuctionsSeller() {
                           " " +
                           v.bidding_transaction_id.bidder_id.lname}
                       </h6>
-                      <p>Rs. {v.bidding_transaction_id.bid_price}</p>
+                      <p>
+                        Rs. {Math.round(v.bidding_transaction_id.bid_price)}
+                      </p>
                     </>
                   )}
                 </h6>
                 <h6>
                   Next Bid Ammount(Rs.) :{" "}
-                  {v.bidding_transaction_id == null
-                    ? v.p_Id.base_price
-                    : 1.02 * v.bidding_transaction_id.bid_price}
+                  {Math.round(
+                    v.bidding_transaction_id == null
+                      ? v.p_Id.base_price
+                      : 1.02 * v.bidding_transaction_id.bid_price
+                  )}
                 </h6>
                 {/* <p>{bidder_id}</p> */}
               </td>

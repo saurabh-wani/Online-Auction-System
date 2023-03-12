@@ -113,16 +113,19 @@ public class BidController {
 	@GetMapping("/getsellerhome/{seller_id}")
 	public List<Bidding> getSellerHome(@PathVariable("seller_id") int seller_id)
 	{
-		List<Product> products = pserv.getCompletedAuctionProducts();
+		List<Product> products = pserv.getCompletedAuctionProductsSeller(seller_id);
 		List<BiddingTransaction> bts =new ArrayList<>();
 		List<Bidding> bids= new ArrayList<>();
-		
+		System.out.println(products.size());
 		for(Product p:products)
 		{
+			System.out.println(p.getProduct_name());
+			//System.out.println(p.getSeller_id().getFname());
 			if(bserv.findProductInBiddingTable(p.getP_Id())==null)
 			{
 				BiddingTransaction bt= bserv.findMaxBid(p.getP_Id());
 				Bidding b;
+//				System.out.println(p.getProduct_name());
 				if(bt!=null)
 				{
 //					Product p_Id, float base_price, User bidder_id, Date start_date, Date end_date,
@@ -133,11 +136,13 @@ public class BidController {
 				{
 					b=new Bidding(p,p.getBase_price(),p.getStart_date(),p.getEnd_date(),new String("No bids Placed"));
 				}
+				System.out.println(b);
 				bserv.save(b);
 			}
 		}
 		
-		bids = bserv.findAllFinalBids();
+		//bids = bserv.findAllFinalBids();
+		bids= bserv.findsellerhome(seller_id);
 		
 		
 		return bids;

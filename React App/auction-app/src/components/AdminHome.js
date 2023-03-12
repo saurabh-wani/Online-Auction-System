@@ -25,7 +25,7 @@ function AdminHome() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App App5">
       <header>
         <Navbar bg="primary" variant="dark">
           <Container>

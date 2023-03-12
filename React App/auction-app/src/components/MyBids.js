@@ -14,7 +14,9 @@ export default function MyBids() {
   const [biddings, setBiddings] = useState([]);
   return (
     <div>
-      <h2>My Bids</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        My Bids
+      </h2>
       <table className="table table-bordered">
         {biddings.map((v) => {
           if (v.bt.bid_price === v.highest_bid_price)

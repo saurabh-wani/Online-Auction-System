@@ -17,7 +17,9 @@ export default function Products() {
 
   return (
     <div>
-      <h2>Products</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        Products
+      </h2>
       <table className="table table-bordered">
         {products.map((v) => {
           // else

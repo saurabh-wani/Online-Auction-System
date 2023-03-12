@@ -15,7 +15,9 @@ export default function ProductsSold() {
   const [productsSold, setProducts] = useState([]);
   return (
     <div>
-      <h2 className="text-center">Sold Products</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        Sold Products
+      </h2>
       <table className="table table-bordered">
         {productsSold.map((v) => {
           if (v.feedback == null)

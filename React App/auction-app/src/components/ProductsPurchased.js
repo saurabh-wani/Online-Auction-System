@@ -43,7 +43,9 @@ export default function ProductsPurchased() {
 
   return (
     <div>
-      <h2 className="text-center">Products Purchased</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        Products Purchased
+      </h2>
       <table className="table table-bordered">
         {purchasedProducts.map((v) => {
           if (v.feedback == null)

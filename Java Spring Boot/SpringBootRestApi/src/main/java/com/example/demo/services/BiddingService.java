@@ -76,6 +76,12 @@ public class BiddingService {
 		return btrepo.mybids(bidder_id);
 	}
 	
+	public List<Bidding> findsellerhome(int sellerr_id)
+	{
+		User Seller_id =urepo.getById(sellerr_id).get();
+		return brepo.findsellerhome(Seller_id);
+	}
+	
 	public float findHighestBidForProductUsingP_Id(int P_Id)
 	{
 		return btrepo.findHighestBidForProductUsingP_Id(P_Id);

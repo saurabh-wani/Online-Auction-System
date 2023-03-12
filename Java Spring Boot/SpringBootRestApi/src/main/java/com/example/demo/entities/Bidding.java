@@ -132,6 +132,13 @@ public class Bidding
 	public void setBidding_status(String bidding_status) {
 		this.bidding_status = bidding_status;
 	}
+
+	@Override
+	public String toString() {
+		return "Bidding [bid_id=" + bid_id + ", P_Id=" + P_Id + ", base_price=" + base_price + ", bidder_id="
+				+ bidder_id + ", start_date=" + start_date + ", end_date=" + end_date + ", final_bid_price="
+				+ final_bid_price + ", bidding_status=" + bidding_status + "]";
+	}
 	
 	
 }

@@ -1,5 +1,0 @@
-package com.example.demo.entities;
-
-public class ProductReg {
-	  String product_name,category_id,description,base_price,status;
-}

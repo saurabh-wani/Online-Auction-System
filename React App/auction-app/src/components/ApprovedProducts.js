@@ -50,7 +50,10 @@ function ApprovedProducts() {
       {/* {approvedproducts.map((v) => {
         return <p>{v}</p>;
       })} */}
-      <h1> Approved Products</h1>
+      <h1 className="text-center" style={{ backgroundColor: "white" }}>
+        {" "}
+        Approved Products
+      </h1>
       <table className="table table-bordered">
         {approvedproducts.map((v) => {
           // var start_date="2023-03-09";

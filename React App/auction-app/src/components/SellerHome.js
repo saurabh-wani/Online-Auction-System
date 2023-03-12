@@ -16,7 +16,7 @@ function SellerHome() {
       });
   }, []);
   return (
-    <div className="App">
+    <div className="App App3">
       <header>
         <Navbar bg="primary" variant="dark">
           <Container>

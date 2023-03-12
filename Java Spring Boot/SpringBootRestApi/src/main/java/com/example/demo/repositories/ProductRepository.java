@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Product;
+import com.example.demo.entities.User;
 
 @Transactional
 @Repository
@@ -59,4 +60,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		
 		@Query(value = "select * from product where curdate() > end_date", nativeQuery=true)
 		public List<Product> getCompletedAuctionProducts();
+		
+		@Query(value="select * from product p where curdate() > end_date and seller_id=:seller_id",nativeQuery = true)
+		public List<Product> getCompletedAuctionProductsSeller(int seller_id);
 }

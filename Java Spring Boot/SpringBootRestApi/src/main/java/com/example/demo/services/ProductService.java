@@ -20,6 +20,9 @@ public class ProductService {
 	@Autowired
 	ProductRepository prepo;
 	
+	@Autowired
+	UserService userv;
+	
 	public Product saveProduct(Product p)
 	{
 		return prepo.save(p);
@@ -87,6 +90,12 @@ public class ProductService {
 	public List<Product> getCompletedAuctionProducts()
 	{
 		return prepo.getCompletedAuctionProducts();
+	}
+	
+	public List<Product> getCompletedAuctionProductsSeller(int seller_id)
+	{
+		//User seller_id2=userv.getById(seller_id);
+		return prepo.getCompletedAuctionProductsSeller(seller_id);
 	}
 
 }

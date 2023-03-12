@@ -13,7 +13,10 @@ function PendingProductsForApproval() {
 
   return (
     <div>
-      <h1> Pending Products for Approval </h1>
+      <h1 className="text-center" style={{ backgroundColor: "white" }}>
+        {" "}
+        Pending Products for Approval{" "}
+      </h1>
       <table className="table table-bordered">
         {products.map((v) => {
           return (

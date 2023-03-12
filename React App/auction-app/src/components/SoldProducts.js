@@ -16,7 +16,9 @@ export default function SoldProducts() {
 
   return (
     <div>
-      <h2 className="text-center">Sold Products</h2>
+      <h2 className="text-center" style={{ backgroundColor: "white" }}>
+        Sold Products
+      </h2>
       <table className="table table-striped table-bordered table-hover">
         {productsSold.map((v, i) => {
           if (v.feedback == null)

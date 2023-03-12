@@ -14,7 +14,10 @@ export default function BidderHomeHome() {
   return (
     <div>
       {/* <p>{biddings}</p> */}
-      <h1> Auctions Ended</h1>
+      <h1 className="text-center" style={{ backgroundColor: "white" }}>
+        {" "}
+        Auctions Ended
+      </h1>
       <table className="table table-bordered">
         {biddings.map((v) => {
           if (v.bidding_status === "Payment not done yet")

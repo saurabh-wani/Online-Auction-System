@@ -35,9 +35,7 @@
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Modifying"/>
     <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Bidding"/>
-    <fullyQualifiedTypeName name="com.example.demo.services.UserService"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.User"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
@@ -45,10 +43,8 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.FeedbackRepository"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.example.demo.services.FeedbackService"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.Product"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Feedback"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductPurchased"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.ProductSoldSeller"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.SaltValue"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.PassBasedEnc"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Product"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.example.demo.services.UserService"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.User"/>
 </qualifiedTypeNameHistroy>

@@ -22,4 +22,7 @@ public interface BidRepository extends JpaRepository<Bidding, Integer> {
 	@Modifying
 	@Query("update Bidding set bidding_status='payment done' where bid_id=:bid_id")
 	public int changePaymentStatus(int bid_id);
+	
+	@Query("select b from Bidding b where b.P_Id.seller_id=:seller_id")
+	public List<Bidding> findsellerhome(User seller_id);
 }

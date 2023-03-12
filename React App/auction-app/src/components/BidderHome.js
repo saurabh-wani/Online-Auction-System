@@ -17,7 +17,7 @@ function BidderHome() {
       });
   }, []);
   return (
-    <div className="App">
+    <div className="App4">
       <header>
         <Navbar bg="primary" variant="dark">
           <Container>
