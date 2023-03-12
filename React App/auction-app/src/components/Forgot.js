@@ -63,7 +63,10 @@ let Forget = () => {
   };
   return (
     <div>
-      <div className="Auth-form-container App1">
+      <div
+        className="Auth-form-container App2"
+        style={{ justifyContent: "center", alignItems: "center" }}
+      >
         <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Forget password</h3>

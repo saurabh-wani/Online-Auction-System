@@ -26,7 +26,7 @@ export default function BidderHomeHome() {
                 <td>
                   Product Name:{v.p_Id.product_name}
                   <br />
-                  Product Name:{v.p_Id.category_id.category_name}
+                  Category Name:{v.p_Id.category_id.category_name}
                   <br />
                   Product Description:{v.p_Id.description}
                   <br />

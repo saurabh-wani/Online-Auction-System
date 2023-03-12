@@ -159,7 +159,7 @@ export default function Products() {
                             " " +
                             v.bidding_transaction_id.bidder_id.lname}
                         </h4>
-                        <p>"Rs" + {v.bidding_transaction_id.bid_price}</p>
+                        <p>Rs {v.bidding_transaction_id.bid_price}</p>
                       </>
                     )}
                   </h4>
@@ -429,7 +429,7 @@ export default function Products() {
                             " " +
                             v.bidding_transaction_id.bidder_id.lname}
                         </h4>
-                        <p>"Rs" + {v.bidding_transaction_id.bid_price}</p>
+                        <p>Rs {v.bidding_transaction_id.bid_price}</p>
                       </>
                     )}
                   </h4>
@@ -578,7 +578,7 @@ export default function Products() {
                             " " +
                             v.bidding_transaction_id.bidder_id.lname}
                         </h4>
-                        <p>"Rs" + {v.bidding_transaction_id.bid_price}</p>
+                        <p>Rs. {v.bidding_transaction_id.bid_price}</p>
                       </>
                     )}
                   </h4>

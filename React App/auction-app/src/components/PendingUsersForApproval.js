@@ -15,7 +15,7 @@ export default function PendingUsersForApproval() {
     <div>
       <h1 className="text-center" style={{ backgroundColor: "white" }}>
         {" "}
-        Pending Products for Approval{" "}
+        Pending Users for Approval{" "}
       </h1>
       <table className="table table-bordered">
         {users.map((v) => {
